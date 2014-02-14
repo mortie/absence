@@ -3,12 +3,12 @@
 
 	if ($conf) {
 		if (array_key_exists("p", $_GET)) {
-			$template = $_GET['p'];
+			$page = $_GET['p'];
 		} else {
-			$template = "index";
+			$page = "index";
 		}
 	} else {
-		$template = "setup";
+		$page = "setup";
 	}
 
-	template($template);
+	page($page);

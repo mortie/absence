@@ -10,10 +10,20 @@
 
 	$env = [];
 
-	function template($template) {
+	function page($page) {
 		global $env;
 		global $conf;
-		require "templates/$template.php";
+		require "pages/$page.php";
+	}
+
+	function template($template, $args) {
+		$str = file_get_contents("templates/$template.html");
+		foreach ($args as $key=>$val) {
+			$str = str_replace("{".$key."}", $val, $str);
+		}
+		echo "<!--Start of $template.html-->".PHP_EOL;
+		echo $str;
+		echo "<!--End of $template.html-->".PHP_EOL;
 	}
 
 	function make_mysqli($conf) {
