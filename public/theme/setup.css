@@ -1,0 +1,30 @@
+.table .key {
+	width: 45%;
+	display: inline-block;
+	text-align: right;
+}
+.table .val {
+	width: 45%;
+	display: inline-block;
+}
+.table input {
+	width: 100%;
+}
+
+form {
+	width: 400px;
+	margin: auto;
+
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+		-webkit-transform: translateY(-50%);
+		-moz-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		-o-transform: translateY(-50%);
+}
+
+html, body {
+	height: 100%;
+	margin: 0px;
+}
