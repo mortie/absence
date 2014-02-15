@@ -6,6 +6,7 @@
 	$conf['dbhost'] = $_POST['dbhost'];
 	$conf['dbuser'] = $_POST['dbuser'];
 	$conf['dbpass'] = $_POST['dbpass'];
+	$conf['locale'] = $_POST['locale'];
 
 	$rQuery = file_get_contents("setup/sql.txt");
 	$fQuery = str_replace("{dbname}", $conf['dbname'], $rQuery);

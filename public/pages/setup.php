@@ -10,7 +10,7 @@
 				Database Name:
 			</div>
 			<div class="val">
-				<input type="text" name="dbname" value="abstinence">
+				<input type="text" name="dbname" value="absence">
 			</div>
 
 			<div class="key">
@@ -32,6 +32,13 @@
 			</div>
 			<div class="val">
 				<input type="text" name="dbpass">
+			</div>
+
+			<div class="key">
+				Time Zone:
+			</div>
+			<div class="val">
+				<input type="text" name="locale" value="Europe/Oslo">
 			</div>
 
 			<div class="key"></div>

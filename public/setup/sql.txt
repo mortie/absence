@@ -2,14 +2,16 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE DATABASE IF NOT EXISTS `{dbname}`;
+CREATE SCHEMA IF NOT EXISTS `{dbname}` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `{dbname}` ;
 
 -- -----------------------------------------------------
 -- Table `{dbname}`.`meeting`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `{dbname}`.`meeting` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `day` DATE NOT NULL,
-  PRIMARY KEY (`day`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -29,19 +31,19 @@ ENGINE = InnoDB;
 -- Table `{dbname}`.`meeting_has_people`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `{dbname}`.`meeting_has_people` (
-  `meeting_day` DATE NOT NULL,
   `people_id` INT NOT NULL,
-  PRIMARY KEY (`meeting_day`, `people_id`),
+  `meeting_id` INT NOT NULL,
+  PRIMARY KEY (`people_id`, `meeting_id`),
   INDEX `fk_meeting_has_people_people1_idx` (`people_id` ASC),
-  INDEX `fk_meeting_has_people_meeting_idx` (`meeting_day` ASC),
-  CONSTRAINT `fk_meeting_has_people_meeting`
-    FOREIGN KEY (`meeting_day`)
-    REFERENCES `{dbname}`.`meeting` (`day`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `fk_meeting_has_people_meeting1_idx` (`meeting_id` ASC),
   CONSTRAINT `fk_meeting_has_people_people1`
     FOREIGN KEY (`people_id`)
     REFERENCES `{dbname}`.`people` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_meeting_has_people_meeting1`
+    FOREIGN KEY (`meeting_id`)
+    REFERENCES `{dbname}`.`meeting` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -50,4 +52,3 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-

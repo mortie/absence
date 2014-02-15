@@ -3,3 +3,4 @@
 
 	$sPath = "scripts/".$_GET['s'].".php";
 	require $sPath;
+	header("Location: .");
