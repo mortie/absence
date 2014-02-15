@@ -18,15 +18,15 @@
 
 	//Current attendence and such
 	$currAttendees = [];
-	$result = $env['mysqli']->query("SELECT * FROM meeting_has_people WHERE meeting_id = $dateID");
+	$result = $env['mysqli']->query("SELECT * FROM meeting_has_person WHERE meeting_id = $dateID");
 	if ($result->num_rows) {
 		while ($row = $result->fetch_assoc()) {
-			array_push($currAttendees, $row['people_id']);
+			array_push($currAttendees, $row['person_id']);
 		}
 	}
 	
 	//Fecth people and such
-	$result = $env['mysqli']->query("SELECT * FROM people ORDER BY class");
+	$result = $env['mysqli']->query("SELECT * FROM person ORDER BY class");
 	while ($row = $result->fetch_assoc()) {
 		if (in_array($row['id'], $currAttendees)) {
 			$checked = "checked";

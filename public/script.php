@@ -3,4 +3,8 @@
 
 	$sPath = "scripts/".$_GET['s'].".php";
 	require $sPath;
-	header("Location: .");
+	if (array_key_exists("t", $_GET)) {
+		header("Location: .?p=".$_GET['t']);
+	} else {
+		header("Location: .");
+	}

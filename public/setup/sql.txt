@@ -16,9 +16,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `{dbname}`.`people`
+-- Table `{dbname}`.`person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `{dbname}`.`people` (
+CREATE TABLE IF NOT EXISTS `{dbname}`.`person` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NOT NULL,
@@ -28,20 +28,20 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `{dbname}`.`meeting_has_people`
+-- Table `{dbname}`.`meeting_has_person`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `{dbname}`.`meeting_has_people` (
-  `people_id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `{dbname}`.`meeting_has_person` (
+  `person_id` INT NOT NULL,
   `meeting_id` INT NOT NULL,
-  PRIMARY KEY (`people_id`, `meeting_id`),
-  INDEX `fk_meeting_has_people_people1_idx` (`people_id` ASC),
-  INDEX `fk_meeting_has_people_meeting1_idx` (`meeting_id` ASC),
-  CONSTRAINT `fk_meeting_has_people_people1`
-    FOREIGN KEY (`people_id`)
-    REFERENCES `{dbname}`.`people` (`id`)
+  PRIMARY KEY (`person_id`, `meeting_id`),
+  INDEX `fk_meeting_has_person_person1_idx` (`person_id` ASC),
+  INDEX `fk_meeting_has_person_meeting1_idx` (`meeting_id` ASC),
+  CONSTRAINT `fk_meeting_has_person_person1`
+    FOREIGN KEY (`person_id`)
+    REFERENCES `{dbname}`.`person` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_meeting_has_people_meeting1`
+  CONSTRAINT `fk_meeting_has_person_meeting1`
     FOREIGN KEY (`meeting_id`)
     REFERENCES `{dbname}`.`meeting` (`id`)
     ON DELETE NO ACTION
