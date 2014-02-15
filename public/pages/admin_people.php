@@ -1,3 +1,6 @@
+<?php
+	requirePassword("admin");
+?>
 <form method="post" action="script.php?s=admin_updatePeople&t=admin">
 <?php
 	$result = $env['mysqli']->query("SELECT * FROM person ORDER BY class");
@@ -14,5 +17,5 @@
 		"id"=>"new"
 	]);
 ?>
-	<input type="submit" value="Submit">
+	<button>Submit</button>
 </form>

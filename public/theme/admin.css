@@ -1,0 +1,7 @@
+button {
+	width: 60px;
+}
+
+button.add {
+	width: auto;
+}

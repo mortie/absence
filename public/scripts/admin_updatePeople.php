@@ -1,4 +1,5 @@
 <?php
+	requirePassword("admin");
 	$newEntry = ["empty"=>true];
 
 	foreach ($_POST as $rPersonID=>$rVal) {

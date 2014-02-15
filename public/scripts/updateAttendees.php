@@ -1,4 +1,5 @@
 <?php
+	requirePassword("index");
 	$sDateID = mysql_real_escape_string($_POST['dateID']);
 
 	//Clear meeting

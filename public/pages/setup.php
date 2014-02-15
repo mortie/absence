@@ -1,3 +1,9 @@
+<?php
+	if (!empty($conf)) {
+		requirePassword("admin");
+	}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,7 +37,7 @@
 				Database Password:
 			</div>
 			<div class="val">
-				<input type="text" name="dbpass">
+				<input type="password" name="dbpass">
 			</div>
 
 			<div class="key">
@@ -39,6 +45,20 @@
 			</div>
 			<div class="val">
 				<input type="text" name="locale" value="Europe/Oslo">
+			</div>
+
+			<div class="key">
+				Password:
+			</div>
+			<div class="val">
+				<input type="password" name="indexpass">
+			</div>
+
+			<div class="key">
+				Admin Password:
+			</div>
+			<div class="val">
+				<input type="password" name="adminpass">
 			</div>
 
 			<div class="key"></div>

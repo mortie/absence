@@ -1,4 +1,6 @@
-
+<?php
+	requirePassword('admin');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +9,7 @@
 <body>
 <?php page("admin_people"); ?>
 	<a href=".">
-		<input type="button" value="Back">
+		<button>Home</button>
 	</a>
 </body>
 

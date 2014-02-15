@@ -1,3 +1,6 @@
+<?php
+	requirePassword("index");
+?>
 <!DOCTYPE html>
 <head>
 	<link rel="stylesheet" href="theme/index.css">
