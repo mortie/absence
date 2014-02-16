@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 </head>
 <body>
 	<form method="post" action="script.php?s=login&t=<?=$arg['section'] ?>">

@@ -4,9 +4,11 @@
 <!DOCTYPE html>
 <head>
 	<link rel="stylesheet" href="theme/index.css">
+	<meta charset="utf-8">
 </head>
 <body>
 	<form method="post" action="script.php?s=updateAttendees">
+		<div id="list">
 <?php
 	$date = date("Y-m-d");	
 
@@ -46,6 +48,7 @@
 		]);
 	}
 ?>
+		</div>
 		<input type="hidden" name="dateID" value="<?=$dateID ?>">
 
 		<input type="submit" value="Submit">

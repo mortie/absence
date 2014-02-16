@@ -1,6 +1,11 @@
-<label>
-	<input type="checkbox" name="p{id}" {checked}>
-	<span>
-		{class}: {firstname} {lastname}
-	</span>
-</label><br>
+<span class="person">
+	<input id="p{id}" type="checkbox" name="p{id}" {checked}>
+	<label for="p{id}">
+		<span>
+			{firstname} {lastname}
+			<span style="float: right">
+				{class}
+			</span>
+		</span>
+	</label>
+</span><br>
