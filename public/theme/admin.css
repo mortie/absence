@@ -1,7 +1,29 @@
+span {
+	display: inline-block;
+	margin: 0px 2px;
+}
+
 button {
 	width: 60px;
 }
 
 button.add {
 	width: auto;
+}
+
+.role {
+	width: 40px;
+	padding: 2px;
+}
+.class {
+	width: 80px;
+	padding: 2px;
+}
+.firstname {
+	width: 100px;
+	padding: 2px;
+}
+.lastname {
+	width: 150px;
+	padding: 2px;
 }
