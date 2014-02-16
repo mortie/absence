@@ -20,9 +20,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `{dbname}`.`person` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `firstname` VARCHAR(45) NOT NULL,
-  `lastname` VARCHAR(45) NOT NULL,
+  `firstname` VARCHAR(255) NOT NULL,
+  `lastname` VARCHAR(255) NOT NULL,
   `class` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(45)
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

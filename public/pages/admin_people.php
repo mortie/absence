@@ -9,7 +9,8 @@
 			"firstname"=>$row['firstname'],
 			"lastname"=>$row['lastname'],
 			"id"=>$row['id'],
-			"class"=>$row['class']
+			"class"=>$row['class'],
+			"role"=>$row['role']
 		]);
 	}
 
