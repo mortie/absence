@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `{dbname}`.`person` (
   `firstname` VARCHAR(255) NOT NULL,
   `lastname` VARCHAR(255) NOT NULL,
   `class` VARCHAR(45) NOT NULL,
-  `role` VARCHAR(45)
+  `role` INTEGER
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
