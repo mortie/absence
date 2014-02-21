@@ -37,9 +37,7 @@
 		foreach ($args as $key=>$val) {
 			$str = str_replace("{".$key."}", $val, $str);
 		}
-		echo "<!--Start of $template.html-->".PHP_EOL;
-		echo $str;
-		echo "<!--End of $template.html-->".PHP_EOL;
+		return $str;
 	}
 
 	function makeMysqli($conf) {

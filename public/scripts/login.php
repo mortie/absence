@@ -5,5 +5,5 @@
 	if (md5($pass.$conf['pass_'.$section.'_salt']) === $conf['pass_'.$section.'_hash']) {
 		$_SESSION['loggedin_'.$section] = true;
 	} else {
-		header("Location: ".$_SERVER['HTTP_REFERRER']);
+		header("Location: ".$_SERVER['HTTP_REFERER']);
 	}

@@ -39,7 +39,7 @@
 			$checked = "";
 		}
 
-		template("person", [
+		echo template("person", [
 			"firstname"=>$row['firstname'],
 			"lastname"=>$row['lastname'],
 			"id"=>$row['id'],

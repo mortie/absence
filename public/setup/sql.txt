@@ -27,6 +27,14 @@ CREATE TABLE IF NOT EXISTS `{dbname}`.`person` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `{dbname}`.`role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `{dbname}`.`role` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `{dbname}`.`meeting_has_person`

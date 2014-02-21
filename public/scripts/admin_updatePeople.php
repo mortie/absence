@@ -1,7 +1,7 @@
 <?php
 	requirePassword("admin");
 
-	$querys = [];
+	$queries = [];
 	$newEntry = ["empty"=>true];
 
 	foreach ($_POST as $rPersonID=>$rVal) {
@@ -16,19 +16,20 @@
 				$newEntry['empty'] = false;
 			}
 		} else if ($sPersonID[0] == "c") {
-			$querys[$ID]['c'] = $sVal;
+			$queries[$ID]['c'] = $sVal;
 		} else if ($sPersonID[0] == "f") {
-			$querys[$ID]['f'] = $sVal;
+			$queries[$ID]['f'] = $sVal;
 		} else if ($sPersonID[0] == "l") {
-			$querys[$ID]['l'] = $sVal;
+			$queries[$ID]['l'] = $sVal;
 		} else if ($sPersonID[0] == "r") {
-			$querys[$ID]['r'] = $sVal;
+			$queries[$ID]['r'] = substr($sVal, 1);
 		} else if ($sPersonID[0] == "d") {
-			$env['mysqli']->query("DELETE FROM person WHERE id='".ltrim($sPersonID, "d")."'");
+			$env['mysqli']->query("DELETE FROM meeting_has_person WHERE person_id='$ID'");
+			$env['mysqli']->query("DELETE FROM person WHERE id='$ID'");
 		}
 	}
 
-	foreach ($querys as $key=>$val) {
+	foreach ($queries as $key=>$val) {
 		$env['mysqli']->query("UPDATE person SET class='".$val['c']."', firstname='".$val['f']."', lastname='".$val['l']."', role='".$val['r']."' WHERE id=$key");
 	}
 
