@@ -5,8 +5,8 @@
 	$newEntry = ["empty"=>true];
 
 	foreach ($_POST as $rPersonID=>$rVal) {
-		$sPersonID = mysql_real_escape_string($rPersonID);
-		$sVal = mysql_real_escape_string($rVal);
+		$sPersonID = $env['mysqli']->real_escape_string($rPersonID);
+		$sVal = $env['mysqli']->real_escape_string($rVal);
 
 		$ID = substr($sPersonID, 1);
 

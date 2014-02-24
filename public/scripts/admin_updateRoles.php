@@ -5,8 +5,8 @@
 	$newEntry = ["empty"=>true];
 
 	foreach ($_POST as $rRoleID=>$rVal) {
-		$sRoleID = mysql_real_escape_string($rRoleID);
-		$sVal = mysql_real_escape_string($rVal);
+		$sRoleID = $env['mysqli']->real_escape_string($rRoleID);
+		$sVal = $env['mysqli']->real_escape_string($rVal);
 
 		$ID = substr($sRoleID, 1);
 

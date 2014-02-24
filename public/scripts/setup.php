@@ -18,11 +18,18 @@
 	$conf['pass_admin_salt'] = randString(32);
 	$conf['pass_admin_hash'] = md5($_POST['adminpass'].$conf['pass_admin_salt']);
 
+	$env['mysqli'] = makeMysqli($conf);
+	if (!$env['mysqli']) {
+		msg("A MySQL connection error occurred. Make sure you used the correct username/password, and that the MySQL server is running.");
+	}
+
 	$rQuery = file_get_contents("setup/sql.txt");
 	$fQuery = str_replace("{dbname}", $conf['dbname'], $rQuery);
 
-	$env['mysqli'] = makeMysqli($conf);
 	$env['mysqli']->multi_query($fQuery);
+	if ($env['mysqli']->error != "") {
+		msg("An error occurred: ".$env['mysqli']->error);
+	}
 
 	$confStr = "";
 	foreach ($conf as $key=>$val) {

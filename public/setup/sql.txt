@@ -5,9 +5,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE SCHEMA IF NOT EXISTS `{dbname}` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `{dbname}` ;
 
--- -----------------------------------------------------
--- Table `{dbname}`.`meeting`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `{dbname}`.`meeting` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `day` DATE NOT NULL,
@@ -15,30 +12,21 @@ CREATE TABLE IF NOT EXISTS `{dbname}`.`meeting` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `{dbname}`.`person`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `{dbname}`.`person` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(255) NOT NULL,
   `lastname` VARCHAR(255) NOT NULL,
   `class` VARCHAR(45) NOT NULL,
-  `role` INTEGER
+  `role` INTEGER,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- Table `{dbname}`.`role`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `{dbname}`.`role` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
--- -----------------------------------------------------
--- Table `{dbname}`.`meeting_has_person`
--- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `{dbname}`.`meeting_has_person` (
   `person_id` INT NOT NULL,
   `meeting_id` INT NOT NULL,

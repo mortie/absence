@@ -12,6 +12,12 @@
 </head>
 <body>
 	<form method="post" action="script.php?s=setup">
+		<?php
+			$msg = getMsg();
+			if ($msg != "") {
+				echo "<p><strong>$msg</strong></p>";
+			}
+		?>
 		<div class="table">
 			<div class="key">
 				Database Name:

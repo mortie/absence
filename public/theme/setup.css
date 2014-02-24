@@ -8,11 +8,11 @@
 	display: inline-block;
 }
 .table input {
-	width: 100%;
+	width: 200px;
 }
 
 form {
-	width: 400px;
+	width:50%;
 	margin: auto;
 
 	position: relative;

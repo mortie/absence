@@ -10,7 +10,7 @@
 	<form method="post" action="script.php?s=updateAttendees">
 		<div id="list">
 <?php
-	$date = date("Y-m-d");	
+	$date = date("Y-m-d");
 
 	//Fetch meeting and such
 	$result = $env['mysqli']->query("SELECT * FROM meeting WHERE day = '$date'");
@@ -24,28 +24,30 @@
 	//Current attendence and such
 	$currAttendees = [];
 	$result = $env['mysqli']->query("SELECT * FROM meeting_has_person WHERE meeting_id = $dateID");
-	if ($result->num_rows) {
+	if ($result) {
 		while ($row = $result->fetch_assoc()) {
 			array_push($currAttendees, $row['person_id']);
 		}
 	}
-	
+
 	//Fecth people and such
 	$result = $env['mysqli']->query("SELECT * FROM person ORDER BY class");
-	while ($row = $result->fetch_assoc()) {
-		if (in_array($row['id'], $currAttendees)) {
-			$checked = "checked";
-		} else {
-			$checked = "";
-		}
+	if ($result) {
+		while ($row = $result->fetch_assoc()) {
+			if (in_array($row['id'], $currAttendees)) {
+				$checked = "checked";
+			} else {
+				$checked = "";
+			}
 
-		echo template("personCheckbox", [
-			"firstname"=>$row['firstname'],
-			"lastname"=>$row['lastname'],
-			"id"=>$row['id'],
-			"class"=>$row['class'],
-			"checked"=>$checked
-		]);
+			echo template("personCheckbox", [
+				"firstname"=>$row['firstname'],
+				"lastname"=>$row['lastname'],
+				"id"=>$row['id'],
+				"class"=>$row['class'],
+				"checked"=>$checked
+			]);
+		}
 	}
 ?>
 		</div>

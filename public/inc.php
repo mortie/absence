@@ -41,11 +41,30 @@
 	}
 
 	function makeMysqli($conf) {
-		return new mysqli(
+		$mysqli = new mysqli(
 			$conf['dbhost'],
 			$conf['dbuser'],
 			$conf['dbpass']
 		);
+		if ($mysqli->connect_error) {
+			return false;
+		} else {
+			return $mysqli;
+		}
+	}
+
+	function msg($str) {
+		$_SESSION['msg'] = $str;
+		die(header("Location: ".$_SERVER['HTTP_REFERER']));
+	}
+
+	function getMsg() {
+		if (array_key_exists("msg", $_SESSION)) {
+			$msg = $_SESSION['msg'];
+			unset($_SESSION['msg']);
+			return $msg;
+		}
+		return "";
 	}
 
 	if ($conf) {
