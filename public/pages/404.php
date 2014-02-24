@@ -1,1 +1,8 @@
-404: not found
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	404: not found
+</body>
+</html>

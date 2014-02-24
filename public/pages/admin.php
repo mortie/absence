@@ -6,7 +6,7 @@
 <head>
 	<link rel="stylesheet" href="theme/admin.css">
 	<meta charset="utf-8">
-</head>  
+</head>
 <body>
 	<div id="roles">
 		<div class="title">Roles:</div>
@@ -17,8 +17,10 @@
 		<iframe onload="autoResize(this)" id="peopleFrame" src="?p=admin_people"></iframe>
 	</div>
 	<a href=".">
-		<button>Home</button>
+		<input type="button" value="Home">
 	</a>
+	<a href="?p=admin_find">
+		<input type="button" value="Filter">
 	<script>
 		var firstRun = true;
 		function reload(frame) {
