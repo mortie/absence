@@ -10,7 +10,7 @@
 <body>
 	<div id="roles">
 		<div class="title">Roles:</div>
-		<iframe onload="autoResize(this)" id="rolesFrame" onload="reload('peopleFrame')" src="?p=admin_roles"></iframe>
+		<iframe onload="autoResize(this); reload('peopleFrame')" id="rolesFrame" src="?p=admin_roles"></iframe>
 	</div>
 	<div id="people">
 		<div class="title">People:</div>
@@ -20,9 +20,14 @@
 		<button>Home</button>
 	</a>
 	<script>
+		var firstRun = true;
 		function reload(frame) {
-			frame = document.getElementById(frame);
-			frame.src = frame.src;
+			if (!firstRun) {
+				frame = document.getElementById(frame);
+				frame.src = frame.src;
+				return;
+			}
+			firstRun = false;
 		}
 
 		function autoResize(obj) {

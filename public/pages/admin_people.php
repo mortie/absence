@@ -40,12 +40,13 @@
 			]).PHP_EOL;
 		}
 
-		echo template("editPerson", [
+		echo template("person", [
 			"firstname"=>$row['firstname'],
 			"lastname"=>$row['lastname'],
 			"id"=>$row['id'],
 			"class"=>$row['class'],
-			"role"=>$options
+			"role"=>$options,
+			"append"=>"<label><input type='checkbox' name='d".$row['id']."'>Delete</label>"
 		]);
 	}
 
@@ -61,9 +62,13 @@
 			"selected"=>""
 		]);
 	}
-	echo template("newPerson", [
+	echo template("person", [
+		"firstname"=>"",
+		"lastname"=>"",
 		"id"=>"new",
-		"role"=>$options
+		"class"=>"",
+		"role"=>$options,
+		"append"=>"<input type='submit' value='+'>"
 	]);
 ?>
 		<button>Submit</button>

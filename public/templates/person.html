@@ -1,11 +1,9 @@
-<span class="person">
-	<input id="p{id}" type="checkbox" name="p{id}" {checked}>
-	<label for="p{id}">
-		<span>
-			<div class="class">
-				{class}
-			</div>
-			{firstname} {lastname}
-		</span>
-	</label>
-</span><br>
+<div>
+	<select class="role" name="r{id}">
+{role}
+	</select>
+	<input class="class" type="text" name="c{id}" value="{class}">
+	<input class="firstname" type="text" name="f{id}" value="{firstname}">
+	<input class="lastname" type="text" name="l{id}" value="{lastname}">
+{append}
+</div>

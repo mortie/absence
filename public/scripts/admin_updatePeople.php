@@ -34,5 +34,9 @@
 	}
 
 	if (!$newEntry['empty']) {
-		$env['mysqli']->query("INSERT INTO person (class, firstname, lastname) VALUES ('".$newEntry['c']."', '".$newEntry['f']."', '".$newEntry['l']."')");
+		$class = $newEntry['c'];
+		$firstname = $newEntry['f'];
+		$lastname = $newEntry['l'];
+		$role = substr($newEntry['r'], 1);
+		$env['mysqli']->query("INSERT INTO person (class, firstname, lastname, role) VALUES ('$class', '$firstname', '$lastname', '$role')");
 	}
