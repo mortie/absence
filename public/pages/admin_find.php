@@ -21,7 +21,7 @@
 	$result = $env['mysqli']->query("SELECT * FROM meeting WHERE day='$sDate'");
 
 	$dateId = $result->fetch_assoc()['id'];
-	$result = $env['mysqli']->query("SELECT * FROM meeting_has_person WHERE person_id='$dateId'");
+	$result = $env['mysqli']->query("SELECT * FROM meeting_has_person WHERE meeting_id='$dateId'");
 	if ($result) {
 		while ($row = $result->fetch_assoc()) {
 			$personId = $row['person_id'];
