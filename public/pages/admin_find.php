@@ -26,7 +26,7 @@
 			} else {
 				$selected = "";
 			}
-			$options = template("dropdownOption", [
+			$options .= template("dropdownOption", [
 				"val"=>$row['id'],
 				"name"=>$row['day'],
 				"selected"=>$selected
