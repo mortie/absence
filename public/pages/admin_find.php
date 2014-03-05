@@ -47,7 +47,7 @@
 <?php
 	$presentPeople = [];
 	$result = $env['mysqli']->query("SELECT * FROM meeting_has_person WHERE meeting_id='$sDateId'");
-	if ($result) {
+	if ($result->num_rows > 0) {
 		while ($row = $result->fetch_assoc()) {
 			array_push($presentPeople, $row['person_id']);
 
@@ -63,15 +63,19 @@
 				"role"=>$personRole
 			]);
 		}
+	} else {
+		echo "No results";
 	}
 ?>
 	<br>
 	Not present:
 <?php
+	$anyResults = false;
 	$result = $env['mysqli']->query("SELECT * FROM person");
 	if ($result) {
 		while ($row = $result->fetch_assoc()) {
 			if (!in_array($row['id'], $presentPeople)) {
+				$anyResults = true;
 				$personRole = $env['mysqli']->query("SELECT * FROM role WHERE id='".$row['role']."'")->fetch_assoc()['name'];
 				echo template("listPerson", [
 					"class"=>$row['class'],
@@ -81,6 +85,9 @@
 				]);
 			}
 		}
+	}
+	if (!$anyResults) {
+		echo "No results";
 	}
 ?>
 </body>

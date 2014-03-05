@@ -14,11 +14,10 @@
 
 	//Fetch meeting and such
 	$result = $env['mysqli']->query("SELECT * FROM meeting WHERE day = '$date'");
-	if ($result->num_rows == 0) {
-		$env['mysqli']->query("INSERT INTO meeting (day) VALUES ('$date')");
-		$dateID = $env['mysqli']->insert_id;
-	} else {
+	if ($result->num_rows != 0) {
 		$dateID = $result->fetch_assoc()['id'];
+	} else {
+		$dateID = null;
 	}
 
 	//Current attendence and such
