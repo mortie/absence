@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="theme/admin.css">
 	<meta charset="utf-8">
 </head>
-<body>
+<body style="width: 580px;">
 	<div id="nav">
 		<a href="?p=index"><button>Home</button></a>
 		<button id="people" onclick="go('#people')">People</button>
