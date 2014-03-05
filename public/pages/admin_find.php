@@ -13,7 +13,7 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<form action="?p=admin_find" method="post" id="form">
+	<form action="?p=admin_find" method="post" id="form" style="text-align: center;">
 		Date: <input name="date" type="text" id="datepicker" onchange="$('#form').submit()" value="<?=$sDate ?>">
 	</form>
 
@@ -38,11 +38,6 @@
 		}
 	}
 ?>
-
-	<a href="?p=admin">
-		<input type="button" value="Back">
-	</a>
-
 	<script src="//ajax.googleapis.com/ajax/libFebruarys/jquery/1.11.0/jquery.min.js"></script>
 	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>

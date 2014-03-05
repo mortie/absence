@@ -6,7 +6,7 @@
 <head>
 	<link rel="stylesheet" href="theme/admin.css">
 </head>
-<body>
+<body style="width: 270px;">
 	<form method="post" action="script.php?s=admin_updateRoles&t=admin_roles">
 <?php
 	$result = $env['mysqli']->query("SELECT * FROM role");

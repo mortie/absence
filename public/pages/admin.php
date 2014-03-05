@@ -8,34 +8,36 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<div id="roles">
-		<div class="title">Roles:</div>
-		<iframe onload="autoResize(this); reload('peopleFrame')" id="rolesFrame" src="?p=admin_roles"></iframe>
+	<div id="nav">
+		<a href="?p=index"><button>Home</button></a>
+		<button id="people" onclick="go('#people')">People</button>
+		<button id="roles" onclick="go('#roles')">Roles</button>
+		<button id="find" onclick="go('#find')">Find</button>
 	</div>
-	<div id="people">
-		<div class="title">People:</div>
-		<iframe onload="autoResize(this)" id="peopleFrame" src="?p=admin_people"></iframe>
-	</div>
-	<a href=".">
-		<input type="button" value="Home">
-	</a>
-	<a href="?p=admin_find">
-		<input type="button" value="Filter">
+	<iframe id="frame"></iframe>
+
 	<script>
-		var firstRun = true;
-		function reload(frame) {
-			if (!firstRun) {
-				frame = document.getElementById(frame);
-				frame.src = frame.src;
-				return;
+		var prevButton;
+		var frame = document.getElementById("frame");
+		function go(hash) {
+			hash = hash.substring(1);
+
+			button = document.getElementById(hash);
+			if (prevButton != undefined) {
+				prevButton.className = "";
 			}
-			firstRun = false;
+			button.className = "current";
+			prevButton = button;
+			frame.src = "?p=admin_"+hash;
+			document.location.hash = hash;
 		}
 
-		function autoResize(obj) {
-			obj.height = 10;
-			obj.height = obj.contentDocument.body.scrollHeight;
+		if (document.location.hash) {
+			go(document.location.hash);
+		} else {
+			go("#people");
 		}
 	</script>
+
 </body>
 
