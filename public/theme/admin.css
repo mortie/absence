@@ -58,30 +58,26 @@ button.add {
 	background-color: #000;
 	color: #fff;
 
-	border-style: none;
+	border-style: solid;
+	border-top-style: none;
+	border-width: 2px;
+	border-color: #000;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;	
 
 	font-size: 12pt;
 	height: 30px;
 	width: 70px;
-
-	margin-left: 5px;
-	margin-right: 5px;
 }
 
 #nav button.current,
 #nav button.current:hover {
-	width: 90px;
-	margin-left: -5px;
-	margin-right: -5px;
+	background-color: #DDD;
+	color: #000;
 }
 #nav button:hover {
-	width: 80px;
-	margin-left: 0px;
-	margin-right: 0px;
+	background-color: #999;
 }
-
 iframe {
 	height: 80%;
 }

@@ -1,9 +1,9 @@
 <?php
 	requirePassword("admin");
-	if (array_key_exists("date", $_POST)) {
-		$sDate = $env['mysqli']->real_escape_string($_POST['date']);
+	if (array_key_exists("dateId", $_POST)) {
+		$sDateId = $env['mysqli']->real_escape_string($_POST['dateId']);
 	} else {
-		$sDate = "";
+		$sDateId = "";
 	}
 ?>
 <!DOCTYPE html>
@@ -14,38 +14,74 @@
 </head>
 <body>
 	<form action="?p=admin_find" method="post" id="form" style="text-align: center;">
-		Date: <input name="date" type="text" id="datepicker" onchange="$('#form').submit()" value="<?=$sDate ?>">
-	</form>
-
+		<select name="dateId" onchange="this.form.submit()">
+			<option>...</option>
 <?php
-	$result = $env['mysqli']->query("SELECT * FROM meeting WHERE day='$sDate'");
-
-	$dateId = $result->fetch_assoc()['id'];
-	$result = $env['mysqli']->query("SELECT * FROM meeting_has_person WHERE meeting_id='$dateId'");
+	$result = $env['mysqli']->query("SELECT * FROM meeting");
+	$options = "";
 	if ($result) {
 		while ($row = $result->fetch_assoc()) {
+			if ($sDateId == $row['id']) {
+				$selected = "selected";
+			} else {
+				$selected = "";
+			}
+			$options = template("dropdownOption", [
+				"val"=>$row['id'],
+				"name"=>$row['day'],
+				"selected"=>$selected
+			]);
+		}
+	}
+	echo $options;
+?>
+		</select>
+	</form>
+	<br>
+<?php
+	if (!$sDateId) {
+		die();
+	}
+?>
+	Present:
+<?php
+	$presentPeople = [];
+	$result = $env['mysqli']->query("SELECT * FROM meeting_has_person WHERE meeting_id='$sDateId'");
+	if ($result) {
+		while ($row = $result->fetch_assoc()) {
+			array_push($presentPeople, $row['person_id']);
+
 			$personId = $row['person_id'];
 			$person = $env['mysqli']->query("SELECT * FROM person WHERE id='$personId'")->fetch_assoc();
 
-			$personClass = $env['mysqli']->query("SELECT * FROM role WHERE id='".$person['role']."'")->fetch_assoc()['name'];
+			$personRole = $env['mysqli']->query("SELECT * FROM role WHERE id='".$person['role']."'")->fetch_assoc()['name'];
 
 			echo template("listPerson", [
 				"class"=>$person['class'],
 				"firstname"=>$person['firstname'],
 				"lastname"=>$person['lastname'],
-				"role"=>$personClass
+				"role"=>$personRole
 			]);
 		}
 	}
 ?>
-	<script src="//ajax.googleapis.com/ajax/libFebruarys/jquery/1.11.0/jquery.min.js"></script>
-	<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-	<script>
-		$(function() {
-			$("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
-		});
-	</script>
+	<br>
+	Not present:
+<?php
+	$result = $env['mysqli']->query("SELECT * FROM person");
+	if ($result) {
+		while ($row = $result->fetch_assoc()) {
+			if (!in_array($row['id'], $presentPeople)) {
+				$personRole = $env['mysqli']->query("SELECT * FROM role WHERE id='".$row['role']."'")->fetch_assoc()['name'];
+				echo template("listPerson", [
+					"class"=>$row['class'],
+					"firstname"=>$row['firstname'],
+					"lastname"=>$row['lastname'],
+					"role"=>$personRole
+				]);
+			}
+		}
+	}
+?>
 </body>
 </html>
