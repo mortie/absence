@@ -77,6 +77,10 @@ button.add {
 #nav button:hover {
 	background-color: #999;
 }
+#nav button:focus {
+	outline: none;
+}
+
 iframe {
 	height: 80%;
 }
