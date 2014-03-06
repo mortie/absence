@@ -33,11 +33,12 @@
 	}
 
 	function template($template, $args) {
-		$str = file_get_contents("templates/$template.html");
+		$str = "<!--start: $template-->".PHP_EOL;
+		$str .= file_get_contents("templates/$template.html");
 		foreach ($args as $key=>$val) {
 			$str = str_replace("{".$key."}", $val, $str);
 		}
-		return $str;
+		return $str."<!--end: $template-->".PHP_EOL;
 	}
 
 	function makeMysqli($conf) {

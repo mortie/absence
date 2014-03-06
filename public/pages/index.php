@@ -5,6 +5,7 @@
 <head>
 	<link rel="stylesheet" href="theme/index.css">
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
 </head>
 <body>
 	<form method="post" action="script.php?s=updateAttendees">
@@ -57,4 +58,30 @@
 			<input type="button" value="Admin" style="float: right">
 		</a>
 	</form>
+
+	<script src="scripts/hammer.min.js"></script>
+	<script>
+		function getPerson(element) {
+			if (element.className == "person") {
+				return element;
+			} else {
+				return getPerson(element.parentNode);
+			}
+		}
+
+		function toggle(e) {
+			checkbox = getPerson(e.target).children[0];
+			checkbox.checked = !checkbox.checked;
+		}
+
+		var people = document.getElementsByClassName("person");
+		for (var i=1; i<people.length; ++i) {
+			Hammer(people[i]).on("tap", toggle)
+
+			people[i].addEventListener("click", function(e) {
+				e.preventDefault();
+				console.log("stopped");
+			});
+		}
+	</script>
 </body>
