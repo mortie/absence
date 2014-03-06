@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="theme/find.css">
+	<link rel="stylesheet" href="theme/admin.css">
 	<meta charset="utf-8">
 </head>
 <body>
