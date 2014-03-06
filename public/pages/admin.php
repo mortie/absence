@@ -14,7 +14,7 @@
 		<button id="roles" onclick="go('#roles')">Roles</button>
 		<button id="find" onclick="go('#find')">Find</button>
 	</div>
-	<iframe id="frame"></iframe>
+	<iframe id="frame" onload="updateSize(this)"></iframe>
 
 	<script>
 		var prevButton;
@@ -30,6 +30,10 @@
 			prevButton = button;
 			frame.src = "?p=admin_"+hash;
 			document.location.hash = hash;
+		}
+
+		function updateSize(element) {
+			element.style.height = (element.contentWindow.document.body.scrollHeight)+"px";
 		}
 
 		if (document.location.hash) {
